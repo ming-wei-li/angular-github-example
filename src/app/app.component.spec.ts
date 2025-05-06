@@ -1,6 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { InjectionToken } from '@angular/core';
+export const googleTagManagerId = new InjectionToken<string>('googleTagManagerId');
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -20,16 +22,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'yes'`, () => {
+  it(`should have as title 'angular-github-example'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('yes');
+    expect(app.title).toEqual('angular-github-example');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('yes app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('angular-github-example app is running!');
   });
 });

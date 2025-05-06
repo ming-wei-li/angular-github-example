@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { GoogleTagManagerService } from 'angular-google-tag-manager';
+import { GtmService } from './services/gtm.service';
 
 @Component({
   selector: 'app-root',
@@ -10,17 +9,8 @@ import { GoogleTagManagerService } from 'angular-google-tag-manager';
 export class AppComponent {
   title = 'angular-github-example';
   constructor(
-    private router: Router,
-    private gtmService: GoogleTagManagerService,
+    private gtm: GtmService,
   ) {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        const gtmTag = {
-          event: 'page',
-          pageName: event.url
-        };
-        this.gtmService.pushTag(gtmTag);
-      }
-    });
+    this.gtm.init('GTM-XXXXXXX');
   }
 }
